@@ -12,5 +12,5 @@ type threadNum int
 
 type Thread interface {
 	Num() threadNum
-	OpenNote() sound.Note
+	OpenNote() sound.Absnote
 }

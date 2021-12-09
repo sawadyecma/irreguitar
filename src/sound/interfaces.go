@@ -1,5 +1,7 @@
 package sound
 
-type Note interface {
-	String() string
+import "fmt"
+
+type Absnote interface {
+	fmt.Stringer
 }
