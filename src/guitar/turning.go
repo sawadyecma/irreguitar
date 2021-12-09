@@ -10,9 +10,6 @@ type turning struct {
 	threads map[ThreadNum]Thread
 }
 
-type turnConfig struct {
-}
-
 func NewRegularTurning() Turning {
 	threads := make(map[ThreadNum]Thread, DefaultThreadCnt)
 	for i := 1; i <= DefaultThreadCnt; i++ {
