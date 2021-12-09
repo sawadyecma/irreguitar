@@ -1,7 +1,6 @@
 package guitar
 
 import (
-	"fmt"
 	"reflect"
 )
 
@@ -16,8 +15,7 @@ func NewTurning() Turning {
 	for i := 1; i <= gtThreadCnt; i++ {
 		threadNum, err := NewThreadNum(i)
 		if err != nil {
-			fmt.Printf("err: %s\n", err)
-			return nil
+			panic(err)
 		}
 		threads[*threadNum] = NewThread(threadNum.Absnote())
 	}
