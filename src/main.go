@@ -13,20 +13,26 @@ func main() {
 	tn := guitar.NewRegularTurning()
 	printTurning(tn)
 
-	fmt.Println("===6 Strings Guitar Turning2===")
+	fmt.Println("===6 Strings Guitar HalfDown Turning===")
+	turn := map[int]int{6: -1, 5: -1, 4: -1, 3: -1, 2: -1, 1: -1}
+	halfDownTurning := newTurning(turn)
+	printTurning(halfDownTurning)
+}
+
+func newTurning(turn map[int]int) guitar.Turning {
 	threads := make(map[guitar.ThreadNum]guitar.Thread, guitar.DefaultThreadCnt)
+
 	for i := 1; i <= guitar.DefaultThreadCnt; i++ {
 		threadNum, err := guitar.NewThreadNum(i)
 		if err != nil {
 			panic(err)
 		}
 		threads[*threadNum] = guitar.NewThread(
-			threadNum.RegularOpenNote(),
+			threadNum.RegularOpenNote().Turn(turn[i]),
 		)
 	}
 
-	tn2 := guitar.NewTurning(threads)
-	printTurning(tn2)
+	return guitar.NewTurning(threads)
 }
 
 func printTurning(tn guitar.Turning) {
