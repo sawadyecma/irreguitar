@@ -17,7 +17,9 @@ func NewTurning() Turning {
 		if err != nil {
 			panic(err)
 		}
-		threads[*threadNum] = NewThread(threadNum.Absnote())
+		threads[*threadNum] = NewThread(
+			threadNum.RegularOpenNote(),
+		)
 	}
 
 	return turning{

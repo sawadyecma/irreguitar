@@ -14,7 +14,7 @@ func NewThreadNum(i int) (*threadNum, error) {
 	return nil, errors.New("invalid ThreadNum")
 }
 
-func (r threadNum) Absnote() sound.Absnote {
+func (r threadNum) RegularOpenNote() sound.Absnote {
 	switch r {
 	case 6:
 		return sound.E2
