@@ -5,13 +5,15 @@ import (
 	"reflect"
 )
 
+var gtThreadCnt int = 6
+
 type turning struct {
 	threads []thread
 }
 
-func NewTurning(threadCnt int) Turning {
-	threads := make([]thread, threadCnt)
-	for i := 1; i <= threadCnt; i++ {
+func NewTurning() Turning {
+	threads := make([]thread, gtThreadCnt)
+	for i := 1; i <= gtThreadCnt; i++ {
 		threadNum, err := NewThreadNum(i)
 		if err != nil {
 			fmt.Printf("err: %s\n", err)
