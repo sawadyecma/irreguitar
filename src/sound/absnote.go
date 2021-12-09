@@ -76,6 +76,6 @@ func (r absnote) String() string {
 	return v
 }
 
-func (r absnote) TurnUp(halfToneDiff int) Absnote {
+func (r absnote) Up(halfToneDiff int) Absnote {
 	return absnote(int(r) + halfToneDiff)
 }

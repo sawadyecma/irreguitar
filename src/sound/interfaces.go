@@ -4,5 +4,5 @@ import "fmt"
 
 type Absnote interface {
 	fmt.Stringer
-	TurnUp(halfToneDiff int) Absnote
+	Up(halfToneDiff int) Absnote
 }

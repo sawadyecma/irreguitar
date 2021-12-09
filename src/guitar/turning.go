@@ -10,21 +10,6 @@ type turning struct {
 	threads map[ThreadNum]Thread
 }
 
-func NewRegularTurning() Turning {
-	threads := make(map[ThreadNum]Thread, DefaultThreadCnt)
-	for i := 1; i <= DefaultThreadCnt; i++ {
-		threadNum, err := NewThreadNum(i)
-		if err != nil {
-			panic(err)
-		}
-		threads[*threadNum] = NewThread(
-			threadNum.RegularOpenNote(),
-		)
-	}
-
-	return NewTurning(threads)
-}
-
 func NewTurning(threads map[ThreadNum]Thread) Turning {
 	return turning{
 		threads: threads,

@@ -10,7 +10,7 @@ func main() {
 	fmt.Println("[Start]Irreguitar!")
 
 	turnings := map[string]map[int]int{
-		"regular":   {6: -1, 5: -1, 4: -1, 3: -1, 2: -1, 1: -1},
+		"regular":   {6: +0, 5: +0, 4: +0, 3: +0, 2: +0, 1: +0},
 		"half down": {6: -1, 5: -1, 4: -1, 3: -1, 2: -1, 1: -1},
 		"half up":   {6: +1, 5: +1, 4: +1, 3: +1, 2: +1, 1: +1},
 		"dropD":     {6: -2, 5: +0, 4: +0, 3: +0, 2: +0, 1: +0},
@@ -35,7 +35,7 @@ func newTurning(turn map[int]int) guitar.Turning {
 			panic(err)
 		}
 		threads[*threadNum] = guitar.NewThread(
-			threadNum.RegularOpenNote().TurnUp(turn[i]),
+			threadNum.RegularOpenNote().Up(turn[i]),
 		)
 	}
 
@@ -45,13 +45,11 @@ func newTurning(turn map[int]int) guitar.Turning {
 func printTurning(tn guitar.Turning) {
 	threads := tn.Threads()
 	nums := tn.ThreadNums()
-	fmt.Printf("threadNums: %v\n", nums)
-
 	for _, num := range nums {
 		fmt.Printf(
-			"number: %d, note: %s\n",
+			"num: %d, note: %s\n",
 			num,
-			threads[num].OpenNote().String(),
+			threads[num].OpenNote(),
 		)
 	}
 }
