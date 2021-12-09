@@ -9,21 +9,21 @@ import (
 func main() {
 	fmt.Println("[Start]Irreguitar!")
 
-	fmt.Println("===6 Strings Guitar Regular Turning===")
-	tn := guitar.NewRegularTurning()
-	printTurning(tn)
+	turnings := map[string]map[int]int{
+		"regular":   {6: -1, 5: -1, 4: -1, 3: -1, 2: -1, 1: -1},
+		"half down": {6: -1, 5: -1, 4: -1, 3: -1, 2: -1, 1: -1},
+		"half up":   {6: +1, 5: +1, 4: +1, 3: +1, 2: +1, 1: +1},
+		"dropD":     {6: -2, 5: +0, 4: +0, 3: +0, 2: +0, 1: +0},
+		"DADGAD":    {6: -2, 5: +0, 4: +0, 3: +0, 2: -2, 1: -2},
+		"DAEAC#E":   {6: -2, 5: +0, 4: +2, 3: +2, 2: +2, 1: +0},
+		"FACGCE":    {6: +1, 5: +0, 4: -2, 3: +0, 2: +1, 1: +0},
+	}
 
-	fmt.Println("===6 Strings Guitar HalfDown Turning===")
-	halfDownTurning := newTurning(
-		map[int]int{6: -1, 5: -1, 4: -1, 3: -1, 2: -1, 1: -1},
-	)
-	printTurning(halfDownTurning)
-
-	fmt.Println("===6 Strings Guitar HalfUp Turning===")
-	halfUpTurning := newTurning(
-		map[int]int{6: +1, 5: +1, 4: +1, 3: +1, 2: +1, 1: +1},
-	)
-	printTurning(halfUpTurning)
+	for k, v := range turnings {
+		fmt.Printf("=== Turning: %s===\n", k)
+		tn := newTurning(v)
+		printTurning(tn)
+	}
 }
 
 func newTurning(turn map[int]int) guitar.Turning {

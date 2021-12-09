@@ -7,10 +7,10 @@ irregular turning guitar tool
 - [ ] チューニングを変更できる
     - [x]半音下げチューニング
     - [x]半音上げチューニング
-    - [ ]ドロップD
-    - [ ]DADGAD
-    - [ ]DAEC#AE
-    - [ ]FACGCE
+    - [x]ドロップD
+    - [x]DADGAD
+    - [x]DAEC#AE
+    - [x]FACGCE
 - [x] 開放弦の音がわかる
 - [ ] 押弦してコードの構成音がわかる
     - [ ] 押弦しない場合はミュート
