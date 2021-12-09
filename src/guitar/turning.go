@@ -9,9 +9,9 @@ type turning struct {
 	threads []thread
 }
 
-func NewTurning() Turning {
-	threads := make([]thread, 6)
-	for i := 1; i <= 6; i++ {
+func NewTurning(threadCnt int) Turning {
+	threads := make([]thread, threadCnt)
+	for i := 1; i <= threadCnt; i++ {
 		threadNum, err := NewThreadNum(i)
 		if err != nil {
 			fmt.Printf("err: %s\n", err)

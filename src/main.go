@@ -7,8 +7,10 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello From Irreguitar!")
-	tn := guitar.NewTurning()
+	fmt.Println("[Start]Irreguitar!")
+	threadCnt := 6
+
+	tn := guitar.NewTurning(threadCnt)
 	threads := tn.Threads()
 	for i := range threads {
 		fmt.Printf(
