@@ -10,7 +10,7 @@ func main() {
 	fmt.Println("[Start]Irreguitar!")
 
 	fmt.Println("===6 Strings Guitar Turning===")
-	tn := guitar.NewTurning()
+	tn := guitar.NewRegularTurning()
 	printTurning(tn)
 }
 

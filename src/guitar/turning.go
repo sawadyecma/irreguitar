@@ -13,7 +13,7 @@ type turning struct {
 type turnConfig struct {
 }
 
-func NewTurning() Turning {
+func NewRegularTurning() Turning {
 	threads := make(map[threadNum]Thread, gtThreadCnt)
 	for i := 1; i <= gtThreadCnt; i++ {
 		threadNum, err := NewThreadNum(i)
@@ -25,6 +25,10 @@ func NewTurning() Turning {
 		)
 	}
 
+	return NewTurning(threads)
+}
+
+func NewTurning(threads map[threadNum]Thread) Turning {
 	return turning{
 		threads: threads,
 	}
