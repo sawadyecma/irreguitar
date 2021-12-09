@@ -6,15 +6,15 @@ import (
 	"github.com/sawadyecma/irreguitar/sound"
 )
 
-func NewThreadNum(i int) (*threadNum, error) {
+func NewThreadNum(i int) (*ThreadNum, error) {
 	if 1 <= i && i <= 6 {
-		n := threadNum(i)
+		n := ThreadNum(i)
 		return &n, nil
 	}
 	return nil, errors.New("invalid ThreadNum")
 }
 
-func (r threadNum) RegularOpenNote() sound.Absnote {
+func (r ThreadNum) RegularOpenNote() sound.Absnote {
 	switch r {
 	case 6:
 		return sound.E2

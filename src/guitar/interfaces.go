@@ -5,11 +5,11 @@ import (
 )
 
 type Turning interface {
-	Threads() map[threadNum]Thread
-	ThreadNums() []threadNum
+	Threads() map[ThreadNum]Thread
+	ThreadNums() []ThreadNum
 }
 
-type threadNum int
+type ThreadNum int
 
 type Thread interface {
 	OpenNote() sound.Absnote

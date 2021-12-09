@@ -4,18 +4,18 @@ import (
 	"reflect"
 )
 
-var gtThreadCnt int = 6
+var DefaultThreadCnt int = 6
 
 type turning struct {
-	threads map[threadNum]Thread
+	threads map[ThreadNum]Thread
 }
 
 type turnConfig struct {
 }
 
 func NewRegularTurning() Turning {
-	threads := make(map[threadNum]Thread, gtThreadCnt)
-	for i := 1; i <= gtThreadCnt; i++ {
+	threads := make(map[ThreadNum]Thread, DefaultThreadCnt)
+	for i := 1; i <= DefaultThreadCnt; i++ {
 		threadNum, err := NewThreadNum(i)
 		if err != nil {
 			panic(err)
@@ -28,29 +28,29 @@ func NewRegularTurning() Turning {
 	return NewTurning(threads)
 }
 
-func NewTurning(threads map[threadNum]Thread) Turning {
+func NewTurning(threads map[ThreadNum]Thread) Turning {
 	return turning{
 		threads: threads,
 	}
 }
 
-func (r turning) Threads() map[threadNum]Thread {
+func (r turning) Threads() map[ThreadNum]Thread {
 	s := reflect.ValueOf(r.threads)
 
-	ret := make(map[threadNum]Thread, s.Len())
+	ret := make(map[ThreadNum]Thread, s.Len())
 
 	for _, key := range s.MapKeys() {
-		ret[key.Interface().(threadNum)] = s.MapIndex(key).Interface().(Thread)
+		ret[key.Interface().(ThreadNum)] = s.MapIndex(key).Interface().(Thread)
 	}
 
 	return ret
 }
 
-func (r turning) ThreadNums() []threadNum {
+func (r turning) ThreadNums() []ThreadNum {
 	keys := reflect.ValueOf(r.threads).MapKeys()
-	ret := make([]threadNum, len(r.threads))
+	ret := make([]ThreadNum, len(r.threads))
 	for i := range keys {
-		ret[i] = keys[i].Interface().(threadNum)
+		ret[i] = keys[i].Interface().(ThreadNum)
 	}
 	return ret
 }
