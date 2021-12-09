@@ -6,20 +6,25 @@ import (
 	"github.com/sawadyecma/irreguitar/sound"
 )
 
-func NewThread() Thread {
-	return thread{}
+func NewThread(n threadNum) thread {
+	return thread{
+		threadNum: n,
+	}
 }
 
-type thread struct{}
-
-func (thread) Number() threadNum {
-	// TODO フィールドから取得
-	tn, _ := NewThreadNum(1)
-	return *tn
+type thread struct {
+	threadNum threadNum
 }
 
-func (thread) OpenNote() sound.Note {
-	return nil
+func (r thread) Num() threadNum {
+	return r.threadNum
+}
+
+func (r thread) OpenNote() sound.Note {
+	if r.threadNum == 6 {
+		return sound.NewNote()
+	}
+	return sound.NewNote()
 }
 
 func NewThreadNum(i int) (*threadNum, error) {

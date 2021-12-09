@@ -11,6 +11,6 @@ type Turning interface {
 type threadNum int
 
 type Thread interface {
-	Number() threadNum
+	Num() threadNum
 	OpenNote() sound.Note
 }
