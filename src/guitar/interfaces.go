@@ -1,12 +1,16 @@
 package guitar
 
-import "github.com/sawadyecma/irreguitar/sound"
+import (
+	"github.com/sawadyecma/irreguitar/sound"
+)
 
 type Turning interface {
-	OpenStrings() String
+	Threads() []Thread
 }
 
-type String interface {
-	StringNumber() int
+type threadNum int
+
+type Thread interface {
+	Number() threadNum
 	OpenNote() sound.Note
 }
