@@ -9,12 +9,12 @@ import (
 func main() {
 	fmt.Println("[Start]Irreguitar!")
 
-	printTurning()
-}
-
-func printTurning() {
 	fmt.Println("===6 Strings Guitar Turning===")
 	tn := guitar.NewTurning()
+	printTurning(tn)
+}
+
+func printTurning(tn guitar.Turning) {
 	threads := tn.Threads()
 	nums := tn.ThreadNums()
 	fmt.Printf("threadNums: %v\n", nums)
