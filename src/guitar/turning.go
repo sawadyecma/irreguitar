@@ -7,11 +7,14 @@ import (
 var gtThreadCnt int = 6
 
 type turning struct {
-	threads map[threadNum]thread
+	threads map[threadNum]Thread
+}
+
+type turnConfig struct {
 }
 
 func NewTurning() Turning {
-	threads := make(map[threadNum]thread, gtThreadCnt)
+	threads := make(map[threadNum]Thread, gtThreadCnt)
 	for i := 1; i <= gtThreadCnt; i++ {
 		threadNum, err := NewThreadNum(i)
 		if err != nil {

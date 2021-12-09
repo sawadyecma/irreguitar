@@ -4,7 +4,7 @@ import (
 	"github.com/sawadyecma/irreguitar/sound"
 )
 
-func NewThread(an sound.Absnote) thread {
+func NewThread(an sound.Absnote) Thread {
 	return thread{
 		openNote: an,
 	}
