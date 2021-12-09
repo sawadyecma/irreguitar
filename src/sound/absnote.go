@@ -66,7 +66,6 @@ func (r absnote) String() string {
 	}
 }
 
-func (r absnote) Turn(halfTone int) Absnote {
-	a := int(r)
-	return absnote(a + halfTone)
+func (r absnote) TurnUp(halfToneDiff int) Absnote {
+	return absnote(int(r) + halfToneDiff)
 }

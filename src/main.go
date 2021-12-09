@@ -35,7 +35,7 @@ func newTurning(turn map[int]int) guitar.Turning {
 			panic(err)
 		}
 		threads[*threadNum] = guitar.NewThread(
-			threadNum.RegularOpenNote().Turn(turn[i]),
+			threadNum.RegularOpenNote().TurnUp(turn[i]),
 		)
 	}
 
