@@ -14,9 +14,16 @@ func main() {
 	printTurning(tn)
 
 	fmt.Println("===6 Strings Guitar HalfDown Turning===")
-	turn := map[int]int{6: -1, 5: -1, 4: -1, 3: -1, 2: -1, 1: -1}
-	halfDownTurning := newTurning(turn)
+	halfDownTurning := newTurning(
+		map[int]int{6: -1, 5: -1, 4: -1, 3: -1, 2: -1, 1: -1},
+	)
 	printTurning(halfDownTurning)
+
+	fmt.Println("===6 Strings Guitar HalfUp Turning===")
+	halfUpTurning := newTurning(
+		map[int]int{6: +1, 5: +1, 4: +1, 3: +1, 2: +1, 1: +1},
+	)
+	printTurning(halfUpTurning)
 }
 
 func newTurning(turn map[int]int) guitar.Turning {
