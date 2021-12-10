@@ -33,6 +33,17 @@ const (
 	Eb4
 	E4
 	F4
+	Gb4
+	G4
+	Ab4
+	A4
+	Bb4
+	B4
+	C5
+	Db5
+	D5
+	Eb5
+	E5
 )
 
 var absnoteToString = map[absnote]string{
@@ -66,6 +77,17 @@ var absnoteToString = map[absnote]string{
 	Eb4: "Eb4",
 	E4:  "E4",
 	F4:  "F4",
+	Gb4: "Gb4",
+	G4:  "G4",
+	Ab4: "Ab4",
+	A4:  "A4",
+	Bb4: "Bb4",
+	B4:  "B4",
+	C5:  "C5",
+	Db5: "Db5",
+	D5:  "D5",
+	Eb5: "Eb5",
+	E5:  "E5",
 }
 
 func (r absnote) String() string {
