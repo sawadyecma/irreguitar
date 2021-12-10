@@ -2,6 +2,8 @@ package guitar
 
 import (
 	"reflect"
+
+	"github.com/sawadyecma/irreguitar/sound"
 )
 
 var DefaultThreadCnt int = 6
@@ -35,4 +37,12 @@ func (r turning) ThreadNums() []ThreadNum {
 		ret[i] = keys[i].Interface().(ThreadNum)
 	}
 	return ret
+}
+
+func (r turning) Note(thnm ThreadNum, flet int) sound.Absnote {
+	th, ok := r.threads[thnm]
+	if !ok {
+		panic("invalid thnm")
+	}
+	return th.OpenNote().Up(flet)
 }

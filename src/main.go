@@ -25,6 +25,21 @@ func main() {
 		tn := newTurning(v)
 		printTurning(tn)
 	}
+
+	th := newTurning(turnings["regular"])
+	thnm, err := guitar.NewThreadNum(3)
+	if err != nil {
+		panic(err)
+	}
+
+	n := th.Note(*thnm, 3)
+	fmt.Println(n)
+	n = th.Note(*thnm, 2)
+	fmt.Println(n)
+	n = th.Note(*thnm, 1)
+	fmt.Println(n)
+	n = th.Note(*thnm, 0)
+	fmt.Println(n)
 }
 
 func newTurning(turn map[int]int) guitar.Turning {
