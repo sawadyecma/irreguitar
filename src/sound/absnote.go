@@ -1,5 +1,7 @@
 package sound
 
+import "reflect"
+
 type absnote int
 
 const (
@@ -162,4 +164,10 @@ func (r absnote) String() string {
 
 func (r absnote) Up(halfToneDiff int) Absnote {
 	return absnote(int(r) + halfToneDiff)
+}
+
+func (r absnote) Diff(target Absnote) int {
+	return int(
+		reflect.ValueOf(target).Interface().(absnote) - r,
+	)
 }
