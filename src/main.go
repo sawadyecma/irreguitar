@@ -27,7 +27,7 @@ func main() {
 	}
 
 	th := newTurning(turnings["regular"])
-	thnm, err := guitar.NewThreadNum(3)
+	thnm, err := guitar.NewThreadNum(1)
 	if err != nil {
 		panic(err)
 	}
@@ -39,6 +39,9 @@ func main() {
 	n = th.Note(*thnm, 1)
 	fmt.Println(n)
 	n = th.Note(*thnm, 0)
+	fmt.Println(n)
+
+	n = th.Note(*thnm, 12)
 	fmt.Println(n)
 }
 
