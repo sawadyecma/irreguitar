@@ -27,15 +27,15 @@ func (chordParser) Parse(root sound.Absnote, notes []sound.Absnote) string {
 	highers := consists.highersByRoot(root)
 
 	pd := parsed{
-		thirdType:   highers.getThirdType(),
-		seventhType: highers.getSeventhType(),
+		thirdType:   highers.getThirdType(root),
+		seventhType: highers.getSeventhType(root),
 	}
 
 	lowers := consists.lowersByRoot(root)
 	if len(lowers) == 1 {
 		return fmt.Sprintf(
 			"%s/%s",
-			rootName,
+			rootName+pd.ChordType(),
 			lowers[0].note.Name(),
 		)
 	}
@@ -43,10 +43,5 @@ func (chordParser) Parse(root sound.Absnote, notes []sound.Absnote) string {
 		panic("invalid on chord")
 	}
 
-	// example: C Cm CM7 Cm7 C7 C9 Cadd9 Cm9 C11 C13 C7/E
-
-	// 分数コード
-	// ルートより低い音が1つあれば、分数コード
-	// return fmt.Sprintf("%s", c.rootNote.Name())
-	return ""
+	return rootName + pd.ChordType()
 }
