@@ -10,3 +10,14 @@ func Example_absnote_Diff() {
 	// 4
 	// 12
 }
+
+func Example_absnote_Name() {
+	fmt.Println(C3.Name())
+	fmt.Println(C4.Name())
+	fmt.Println(E5.Name())
+
+	// Output:
+	// C
+	// C
+	// E
+}

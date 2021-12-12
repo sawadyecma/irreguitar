@@ -171,3 +171,8 @@ func (r absnote) Diff(target Absnote) int {
 		reflect.ValueOf(target).Interface().(absnote) - r,
 	)
 }
+
+func (r absnote) Name() string {
+	s := r.String()
+	return s[:len(s)-1]
+}
