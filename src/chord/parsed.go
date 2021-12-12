@@ -1,10 +1,12 @@
+package chord
 
 type lenType int
 
 const (
-	lenTypeMajor lenType = iota
+	lenTypeNone lenType = iota
+	lenTypeMajor
 	lenTypeMinor
-	lenTypeNone
+	lenTypeInvalid
 )
 
 type parsed struct {
@@ -14,31 +16,31 @@ type parsed struct {
 
 func (r parsed) ChordType() string {
 	switch r.thirdType {
+	case lenTypeNone: // Power Chord
+		{
+			return ""
+		}
 	case lenTypeMajor:
 		{
 			switch r.seventhType {
+			case lenTypeNone:
+				return ""
 			case lenTypeMajor:
 				return "M7"
 			case lenTypeMinor:
 				return "7"
-			case lenTypeNone:
-				return ""
 			}
 		}
 	case lenTypeMinor:
 		{
 			switch r.seventhType {
+			case lenTypeNone:
+				return "m"
 			case lenTypeMajor:
 				return "mM7"
 			case lenTypeMinor:
 				return "m7"
-			case lenTypeNone:
-				return "m"
 			}
-		}
-	case lenTypeNone: // Power Chord
-		{
-			return ""
 		}
 	}
 	panic("invalid chord")

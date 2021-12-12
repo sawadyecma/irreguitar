@@ -1,4 +1,4 @@
-package sound
+package chord
 
 import (
 	"fmt"

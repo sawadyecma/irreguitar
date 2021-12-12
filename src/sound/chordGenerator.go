@@ -4,18 +4,10 @@ type chordGenerator struct {
 	parser ChordParser
 }
 
-type CgConfig struct {
-	Parser ChordParser
-}
-
-func NewChordGenerator(conf CgConfig) ChordGenerator {
+func NewChordGenerator(parser ChordParser) ChordGenerator {
 	g := new(chordGenerator)
 
-	if conf.Parser == nil {
-		g.parser = chordParser{}
-	} else {
-		g.parser = conf.Parser
-	}
+	g.parser = parser
 
 	return g
 }

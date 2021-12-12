@@ -1,25 +1,27 @@
-package sound
+package chord
+
+import "github.com/sawadyecma/irreguitar/sound"
 
 type consistNote struct {
-	note     Absnote
+	note     sound.Absnote
 	interval int
 }
 
 type consistNotes []consistNote
 
-func (r consistNotes) lowersByRoot(root Absnote) consistNotes {
+func (r consistNotes) lowersByRoot(root sound.Absnote) consistNotes {
 	return r.filter(func(ele consistNote) bool {
 		return root.Diff(ele.note) < 0
 	})
 }
 
-func (r consistNotes) highersByRoot(root Absnote) consistNotes {
+func (r consistNotes) highersByRoot(root sound.Absnote) consistNotes {
 	return r.filter(func(ele consistNote) bool {
 		return root.Diff(ele.note) > 0
 	})
 }
 
-func (r consistNotes) matchIntervals(root Absnote, interval int) consistNotes {
+func (r consistNotes) matchIntervals(root sound.Absnote, interval int) consistNotes {
 	return r.filter(func(ele consistNote) bool {
 		return root.Diff(ele.note)%12 == interval
 	})

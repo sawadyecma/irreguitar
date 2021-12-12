@@ -12,9 +12,7 @@ func (r mockParser) Parse(root Absnote, notes []Absnote) string {
 
 func Example_chordGenerator_Generate() {
 
-	g := NewChordGenerator(CgConfig{
-		Parser: mockParser{},
-	})
+	g := NewChordGenerator(mockParser{})
 
 	fmt.Println(
 		g.Generate(C3, []Absnote{E3, G3}).Name(),
