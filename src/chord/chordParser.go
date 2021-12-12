@@ -9,6 +9,10 @@ import (
 type chordParser struct {
 }
 
+func NewChordParser() sound.ChordParser {
+	return chordParser{}
+}
+
 func (chordParser) Parse(root sound.Absnote, notes []sound.Absnote) string {
 	rootName := root.Name()
 	if notes == nil || len(notes) == 0 {
