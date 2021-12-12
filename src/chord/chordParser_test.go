@@ -22,7 +22,8 @@ func Test_chordParser_Parse(t *testing.T) {
 		{sound.C3, []sound.Absnote{sound.E3, sound.G3, sound.B3}, "CM7"},
 		{sound.C3, []sound.Absnote{sound.E3, sound.G3, sound.Bb3}, "C7"},
 		{sound.C3, []sound.Absnote{sound.Eb3, sound.G3, sound.Bb3}, "Cm7"},
-		{sound.C3, []sound.Absnote{sound.E2, sound.E3, sound.G3}, "Cadd9"},
+		{sound.C3, []sound.Absnote{sound.E2, sound.Eb3, sound.G3, sound.Bb3}, "Cm7/E"},
+		// {sound.C3, []sound.Absnote{sound.E2, sound.E3, sound.G3}, "Cadd9"},
 	}
 
 	for i, test := range tests {
