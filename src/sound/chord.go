@@ -1,9 +1,28 @@
 package sound
 
 import (
-	"fmt"
 	"reflect"
 )
+
+const (
+	major = iota
+	minor
+	majerSeventh
+	minorSeventh
+	seventh
+	nineth
+	addNine
+)
+
+var codeTypeToString = map[int]string{
+	major:        "",
+	minor:        "m",
+	majerSeventh: "M7",
+	minorSeventh: "m7",
+	seventh:      "7",
+	nineth:       "9",
+	addNine:      "add9",
+}
 
 type chord struct {
 	// not lowest note
