@@ -21,49 +21,16 @@ var turnings = map[string]map[guitar.ThreadNum]int{
 	"DADAC#E":   {6: -2, 5: +0, 4: +0, 3: +2, 2: +2, 1: +0},
 }
 
-func Test_play_Chord_regular(t *testing.T) {
-	play := NewPlay(
-		newTurning(turnings["regular"]),
-		sound.NewChordGenerator(
-			chord.NewChordParser(),
-		),
-	)
+type playChordTestArg struct {
+	rootPress Press
+	presses   []Press
+}
+type playChordTest struct {
+	arg  playChordTestArg
+	want string
+}
 
-	type arg struct {
-		rootPress Press
-		presses   []Press
-	}
-
-	tests := []struct {
-		arg  arg
-		want string
-	}{
-		{
-			arg: arg{
-				rootPress: Press{threadNum: *guitar.NewThreadNum(5), flet: 3},
-				presses: []Press{
-					{threadNum: *guitar.NewThreadNum(4), flet: 4},
-					{threadNum: *guitar.NewThreadNum(3), flet: 0},
-					{threadNum: *guitar.NewThreadNum(2), flet: 1},
-					{threadNum: *guitar.NewThreadNum(1), flet: 0},
-				},
-			},
-			want: "C",
-		},
-		{
-			arg: arg{
-				rootPress: Press{threadNum: *guitar.NewThreadNum(5), flet: 5},
-				presses: []Press{
-					{threadNum: *guitar.NewThreadNum(4), flet: 7},
-					{threadNum: *guitar.NewThreadNum(3), flet: 5},
-					{threadNum: *guitar.NewThreadNum(2), flet: 6},
-					{threadNum: *guitar.NewThreadNum(1), flet: 5},
-				},
-			},
-			want: "Dm7",
-		},
-	}
-
+func test_play_chord(t *testing.T, play Play, tests []playChordTest) {
 	for i, tt := range tests {
 		t.Run(
 			fmt.Sprintf("test:%d", i+1),
@@ -82,7 +49,6 @@ func Test_play_Chord_regular(t *testing.T) {
 			},
 		)
 	}
-
 }
 
 func newTurning(turn map[guitar.ThreadNum]int) turning.Turning {
@@ -96,4 +62,65 @@ func newTurning(turn map[guitar.ThreadNum]int) turning.Turning {
 	}
 
 	return turning.NewTurning(threads)
+}
+
+func Test_play_Chord_regular(t *testing.T) {
+	play := NewPlay(
+		newTurning(turnings["regular"]),
+		sound.NewChordGenerator(
+			chord.NewChordParser(),
+		),
+	)
+
+	tests := []playChordTest{
+		{
+			arg: playChordTestArg{
+				rootPress: Press{threadNum: *guitar.NewThreadNum(5), flet: 3},
+				presses: []Press{
+					{threadNum: *guitar.NewThreadNum(4), flet: 4},
+					{threadNum: *guitar.NewThreadNum(3), flet: 0},
+					{threadNum: *guitar.NewThreadNum(2), flet: 1},
+					{threadNum: *guitar.NewThreadNum(1), flet: 0},
+				},
+			},
+			want: "C",
+		},
+		{
+			arg: playChordTestArg{
+				rootPress: Press{threadNum: *guitar.NewThreadNum(5), flet: 5},
+				presses: []Press{
+					{threadNum: *guitar.NewThreadNum(4), flet: 7},
+					{threadNum: *guitar.NewThreadNum(3), flet: 5},
+					{threadNum: *guitar.NewThreadNum(2), flet: 6},
+					{threadNum: *guitar.NewThreadNum(1), flet: 5},
+				},
+			},
+			want: "Dm7",
+		},
+	}
+	test_play_chord(t, play, tests)
+}
+
+func Test_play_Chord_DAEADbE(t *testing.T) {
+	play := NewPlay(
+		newTurning(turnings["DAEAC#E"]),
+		sound.NewChordGenerator(
+			chord.NewChordParser(),
+		),
+	)
+
+	tests := []playChordTest{
+		{
+			arg: playChordTestArg{
+				rootPress: Press{threadNum: *guitar.NewThreadNum(5), flet: 5},
+				presses: []Press{
+					{threadNum: *guitar.NewThreadNum(4), flet: 5},
+					{threadNum: *guitar.NewThreadNum(3), flet: 4},
+					{threadNum: *guitar.NewThreadNum(2), flet: 5},
+				},
+			},
+			want: "DM7",
+		},
+	}
+	test_play_chord(t, play, tests)
 }
