@@ -1,17 +1,15 @@
 package guitar
 
 import (
-	"errors"
-
 	"github.com/sawadyecma/irreguitar/sound"
 )
 
-func NewThreadNum(i int) (*ThreadNum, error) {
+func NewThreadNum(i int) *ThreadNum {
 	if 1 <= i && i <= 6 {
 		n := ThreadNum(i)
-		return &n, nil
+		return &n
 	}
-	return nil, errors.New("invalid ThreadNum")
+	panic("invalid ThreadNum")
 }
 
 func (r ThreadNum) RegularOpenNote() sound.Absnote {

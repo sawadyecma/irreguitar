@@ -28,10 +28,7 @@ func main() {
 	}
 
 	th := newTurning(turnings["regular"])
-	thnm, err := guitar.NewThreadNum(1)
-	if err != nil {
-		panic(err)
-	}
+	thnm := guitar.NewThreadNum(1)
 
 	n := th.Note(*thnm, 3)
 	fmt.Println(n)
@@ -50,10 +47,7 @@ func newTurning(turn map[guitar.ThreadNum]int) turning.Turning {
 	threads := make(map[guitar.ThreadNum]guitar.Thread, turning.DefaultThreadCnt)
 
 	for i := 1; i <= turning.DefaultThreadCnt; i++ {
-		threadNum, err := guitar.NewThreadNum(i)
-		if err != nil {
-			panic(err)
-		}
+		threadNum := guitar.NewThreadNum(i)
 		threads[*threadNum] = guitar.NewThread(
 			threadNum.RegularOpenNote().Up(turn[*threadNum]),
 		)
