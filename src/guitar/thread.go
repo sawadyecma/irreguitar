@@ -17,3 +17,7 @@ type thread struct {
 func (r thread) OpenNote() sound.Absnote {
 	return r.openNote
 }
+
+func (r thread) Note(flet int) sound.Absnote {
+	return r.openNote.Up(flet)
+}
