@@ -12,12 +12,6 @@ func NewChordGenerator(parser ChordParser) ChordGenerator {
 	return g
 }
 
-func (g *chordGenerator) SetParser(
-	p ChordParser,
-) {
-	g.parser = p
-}
-
 func (g chordGenerator) Generate(
 	rootNote Absnote,
 	notes []Absnote,
