@@ -12,3 +12,11 @@ type Absnote interface {
 type Chord interface {
 	Name() string
 }
+
+type ChordGenerator interface {
+	Generate(root Absnote, notes []Absnote) Chord
+}
+
+type ChordParser interface {
+	Parse(root Absnote, notes []Absnote) string
+}
