@@ -1,4 +1,4 @@
-@startuml dependencies.png
+@startuml dependencies
 abstract chord
 abstract guitar
 abstract sound
