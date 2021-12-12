@@ -26,3 +26,8 @@ irregular turning guitar tool
     - [x] M7
     - [x] m7
     - [x] 7
+    - [ ] 9
+    - [ ] M9
+    - [ ] add9
+    - [ ] 11
+    - [ ] 13
