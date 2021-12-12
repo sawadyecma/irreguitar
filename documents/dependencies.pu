@@ -1,0 +1,10 @@
+@startuml
+abstract chord
+abstract guitar
+abstract sound
+abstract turning
+sound <- chord
+sound <- turning
+sound <- guitar
+guitar <- turning
+@enduml
