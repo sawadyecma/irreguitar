@@ -1,4 +1,4 @@
-package turning
+package guitar
 
 import (
 	"errors"

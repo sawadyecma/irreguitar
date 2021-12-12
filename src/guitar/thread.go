@@ -1,4 +1,4 @@
-package turning
+package guitar
 
 import (
 	"github.com/sawadyecma/irreguitar/sound"
